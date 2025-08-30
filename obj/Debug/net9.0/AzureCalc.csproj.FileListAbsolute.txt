@@ -1,0 +1,6 @@
+/home/spike/Documents/Projects/AzureCalc/obj/Debug/net9.0/AzureCalc.csproj.AssemblyReference.cache
+/home/spike/Documents/Projects/AzureCalc/obj/Debug/net9.0/AzureCalc.GeneratedMSBuildEditorConfig.editorconfig
+/home/spike/Documents/Projects/AzureCalc/obj/Debug/net9.0/AzureCalc.AssemblyInfoInputs.cache
+/home/spike/Documents/Projects/AzureCalc/obj/Debug/net9.0/AzureCalc.AssemblyInfo.cs
+/home/spike/Documents/Projects/AzureCalc/obj/Debug/net9.0/AzureCalc.csproj.CoreCompileInputs.cache
+/home/spike/Documents/Projects/AzureCalc/obj/Debug/net9.0/AzureCalc.sourcelink.json

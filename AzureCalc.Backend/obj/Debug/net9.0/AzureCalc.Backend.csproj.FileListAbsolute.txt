@@ -1,0 +1,12 @@
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/bin/Debug/net9.0/AzureCalc.Backend.deps.json
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/bin/Debug/net9.0/AzureCalc.Backend.dll
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/bin/Debug/net9.0/AzureCalc.Backend.pdb
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/AzureCalc.Backend.GeneratedMSBuildEditorConfig.editorconfig
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/AzureCalc.Backend.AssemblyInfoInputs.cache
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/AzureCalc.Backend.AssemblyInfo.cs
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/AzureCalc.Backend.csproj.CoreCompileInputs.cache
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/AzureCalc.Backend.sourcelink.json
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/AzureCalc.Backend.dll
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/refint/AzureCalc.Backend.dll
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/AzureCalc.Backend.pdb
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/ref/AzureCalc.Backend.dll

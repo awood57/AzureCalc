@@ -1,4 +1,4 @@
-namespace Math
+namespace AzureCalc.Backend
 {
 	public class Calculator
 	{
