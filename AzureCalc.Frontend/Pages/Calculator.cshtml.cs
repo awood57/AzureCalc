@@ -1,13 +1,20 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc;
 using AzureCalc.Backend;
+using AzureCalc.Backend.Services;
 
 namespace AzureCalc.Frontend.Pages
 {
 	public class CalculatorModel : PageModel
 	{
 		private readonly Calculator _calculator = new Calculator();
-	
+		private readonly CalculationStorage _storage;
+
+		public CalculatorModel(CalculationStorage storage)
+		{
+			_storage = storage;
+		}
+
 		[BindProperty]
 		public double Num1 { get; set; }
 	
@@ -39,7 +46,10 @@ namespace AzureCalc.Frontend.Pages
 					Result = null;
 					break;
 			}
+			if (Result.HasValue)
+			{
+				_storage.SaveCalculationAsync(Operation, Num1, Num2, Result.Value);
+			}
 		}
-
 	}
 }

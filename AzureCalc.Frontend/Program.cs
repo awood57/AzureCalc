@@ -1,7 +1,10 @@
+using AzureCalc.Backend.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<CalculationStorage>(sp => new CalculationStorage("UseDevelopmentStorage=true"));
 
 var app = builder.Build();
 

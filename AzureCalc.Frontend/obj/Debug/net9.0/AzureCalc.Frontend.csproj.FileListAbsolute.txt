@@ -99,3 +99,8 @@
 /home/spike/Documents/Projects/AzureCalc/AzureCalc.Frontend/obj/Debug/net9.0/AzureCalc.Frontend.pdb
 /home/spike/Documents/Projects/AzureCalc/AzureCalc.Frontend/obj/Debug/net9.0/AzureCalc.Frontend.genruntimeconfig.cache
 /home/spike/Documents/Projects/AzureCalc/AzureCalc.Frontend/obj/Debug/net9.0/ref/AzureCalc.Frontend.dll
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Frontend/bin/Debug/net9.0/Azure.Core.dll
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Frontend/bin/Debug/net9.0/Azure.Data.Tables.dll
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Frontend/bin/Debug/net9.0/Microsoft.Bcl.AsyncInterfaces.dll
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Frontend/bin/Debug/net9.0/System.ClientModel.dll
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Frontend/bin/Debug/net9.0/System.Memory.Data.dll

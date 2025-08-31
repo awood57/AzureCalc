@@ -10,3 +10,4 @@
 /home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/refint/AzureCalc.Backend.dll
 /home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/AzureCalc.Backend.pdb
 /home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/ref/AzureCalc.Backend.dll
+/home/spike/Documents/Projects/AzureCalc/AzureCalc.Backend/obj/Debug/net9.0/AzureCalc.Backend.csproj.AssemblyReference.cache
