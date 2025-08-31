@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AzureCalc.Frontend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+adddea2953bedbc79905a43c9e149e46fa81725f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a32d617d4c0d80a4171b3fea6386d9604ecc1fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("AzureCalc.Frontend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AzureCalc.Frontend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
