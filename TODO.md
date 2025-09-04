@@ -8,3 +8,6 @@ Backend:
 [ ] - Add example POST/PUT endpoints with dummy responses (databases are overkill)
 CI/CD:
 [ ] - Set up GitHub Actions
+Frontend:
+[ ] - Powers/Logarithms
+[ ] - Calculus

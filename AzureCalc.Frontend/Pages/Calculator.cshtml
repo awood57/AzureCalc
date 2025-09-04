@@ -21,3 +21,21 @@
 {
 	<h3 class="text-primary">Result: @Model.Result</h3>
 }
+
+<h2 class="text-primary">Powers & Logarithms</h2>
+<form method="post">
+	<div class="input-group mb-3">
+		<input type="number" class="form-control" id="baseNum" name="BaseNum" placeholder="Base" step="any" style="max-width:200px;" />
+		<select class="form-select" name="PowerOperation" style="max-width:100px;">
+			<option value="power">x^y</option>
+			<option value="log">logx(y)</option>
+		</select>
+		<input type="number" class="form-control" id="exponentLog" name="ExponentLog" placeholder="Exponent or Log" step="any" style="max-width:200px;" />
+		<button class="btn btn-primary">Calculate</button>
+	</div>
+</form>
+
+@if (Model.PowerResult != null)
+{
+	<h3 class="text-primary">Result: @Model.PowerResult</h3>
+}
