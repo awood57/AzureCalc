@@ -1,16 +1,22 @@
 @page
 @model UnitConversionModel
 
-<h2 class="text-primary">Distance</h2>
+@foreach (var cat in Model.Types)
+{
+	<h2 class="text-primary">@cat.Name</h2>
+	<form method="post">
+		<input type="hidden" name="CategoryName" value="@cat.Name" />
+		<div class="input-group mb-3">
+			<input type="number" class="form-control" name="Number" placeholder="Number" step="any" style="max-width:200px;" />
+			<select class="form-select" name="SelectedUnit" style="max-width:100px">
+				@foreach (var unit in cat.Units)
+				{
+					<option value="@unit">@unit</option>
+				}
+			</select>
+			<button class="btn btn-primary">Convert</button>
+		</div>
+	</form>
+}
 
-<h2 class="text-primary">Mass</h2>
 
-<h2 class="text-primary">Volume</h2>
-
-<h2 class="text-primary">Temperature</h2>
-
-<h2 class="text-primary">Time</h2>
-
-<h2 class="text-primary">Speed</h2>
-
-<h2 class="text-primary">Energy</h2>
