@@ -1,32 +1,28 @@
 @page
-@model CalculatorModel
 
 <h2 class="text-primary">Basic Math Functions</h2>
 
-<form method="post">
+<form id="calcForm">
 	<div class="input-group mb-3">
 		<input type="number" class="form-control" id="num1" name="num1" placeholder="First number" step="any" style="max-width: 200px;" />
-		<select class="form-select" name="operation" style="max-width: 60px;">
+		<select id="operation" class="form-select" name="operation" style="max-width: 60px;">
         		<option value="add">+</option>
         		<option value="sub">-</option>
         		<option value="mul">×</option>
         		<option value="div">÷</option>
         	</select>
         	<input type="number" class="form-control" id="num2" name="num2" placeholder="Second number" step="any" style="max-width: 200px;" />
-        	<button class="btn btn-primary">Calculate</button>
+        	<button type="submit" class="btn btn-primary">Calculate</button>
 	</div>
 </form>
 
-@if (Model.Result != null)
-{
-	<h3 class="text-primary">Result: @Model.Result</h3>
-}
+<h3 id="result" class="text-primary"></h3>
 
 <h2 class="text-primary">Powers & Logarithms</h2>
-<form method="post">
+<form id="powerForm">
 	<div class="input-group mb-3">
 		<input type="number" class="form-control" id="baseNum" name="BaseNum" placeholder="Base" step="any" style="max-width:200px;" />
-		<select class="form-select" name="PowerOperation" style="max-width:100px;">
+		<select id="powerOperation" class="form-select" name="PowerOperation" style="max-width:100px;">
 			<option value="power">x^y</option>
 			<option value="log">logx(y)</option>
 		</select>
@@ -35,7 +31,39 @@
 	</div>
 </form>
 
-@if (Model.PowerResult != null)
-{
-	<h3 class="text-primary">Result: @Model.PowerResult</h3>
-}
+<h3 id="powerResult" class="text-primary"></h3>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+	// Basic Math
+	document.getElementById('calcForm').addEventListener('submit', async (e) => {
+		e.preventDefault();
+		const num1 = parseFloat(document.getElementById('num1').value);
+		const num2 = parseFloat(document.getElementById('num2').value);
+		const operation = document.getElementById('operation').value;
+
+		const response = await fetch(`/api/CalculatorApi/basic?num1=${num1}&num2=${num2}&operation=${operation}`);
+		const data = await response.json();
+		document.getElementById('result').innerText = `Result: ${data.result}`;
+	});
+	//Powers
+	document.getElementById('powerForm').addEventListener('submit', async (e) => {
+        	e.preventDefault();
+        	const baseNum = parseFloat(document.getElementById('baseNum').value);
+        	const exponentLog = parseFloat(document.getElementById('exponentLog').value);
+        	const powerOperation = document.getElementById('powerOperation').value;
+
+        	const response = await fetch('/api/CalculatorApi/power', {
+        		method: 'POST',
+        		headers: { 'Content-Type': 'application/json' },
+        		body: JSON.stringify({
+            			BaseNum: baseNum,
+            			ExponentLog: exponentLog,
+            			Operation: powerOperation
+        		})
+    		});
+        	const data = await response.json();
+        	document.getElementById('powerResult').innerText = `Result: ${data.result}`;
+    	});
+});
+</script>
