@@ -1,22 +1,73 @@
 @page
-@model UnitConversionModel
 
-@foreach (var cat in Model.Types)
-{
-	<h2 class="text-primary">@cat.Name</h2>
-	<form method="post">
-		<input type="hidden" name="CategoryName" value="@cat.Name" />
-		<div class="input-group mb-3">
-			<input type="number" class="form-control" name="Number" placeholder="Number" step="any" style="max-width:200px;" />
-			<select class="form-select" name="SelectedUnit" style="max-width:100px">
-				@foreach (var unit in cat.Units)
-				{
-					<option value="@unit">@unit</option>
-				}
+<h1 class="text-primary">Unit Conversion</h1>
+
+<div id="conversion-container"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+	const container = document.getElementById("conversion-container");
+
+	const res = await fetch("/api/UnitConversionApi/categories");
+	const categories = await res.json();
+
+	for (const [category, units] of Object.entries(categories)) {
+		// Section container
+		const section = document.createElement("div");
+		section.className = "mb-4";
+		// Section header
+		const header = document.createElement("h3");
+		header.className = "text-primary";
+		header.innerText = category;
+		// Result
+		const result = document.createElement("h5");
+		result.className = "text-secondary mt-2";
+
+		// Build the form
+		const form = document.createElement("form");
+		form.className = "input-group mb-2";
+		form.innerHTML = `
+			<input type="hidden" name="category" value="${category}" />
+			<select class="form-select" name="from" style="max-width:100px;">
+				${units.map(u => `<option value="${u}">${u}</option>`).join('')}
 			</select>
-			<button class="btn btn-primary">Convert</button>
-		</div>
-	</form>
-}
+			<input type="number" class="form-control" name="value" placeholder="Value" step="any" style="max-width:200px;" />
+			<select class="form-select" name="to" style="max-width:100px;">
+				${units.map(u => `<option value="${u}">${u}</option>`).join('')}
+			</select>
+			<button class="btn btn-primary" type="submit">Convert</button>
+		`;
+
+		// Conversion submission
+		form.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			const value = parseFloat(form.value.value);
+			const from = form.from.value;
+			const to = form.to.value;
+			const category = form.category.value;
+
+			if (isNaN(value)) {
+				result.innerText = "Please enter a valid number.";
+				return;
+			}
+
+			try {
+				const response = await fetch(`/api/UnitConversionApi/convert?value=${value}&from=${from}&to=${to}&category=${category}`);
+				const data = await response.json();
+				result.innerText = `${data.value} ${data.from} = ${data.result} ${data.to}`;
+			} catch (err) {
+				result.innerText = "Conversion failed.";
+				console.error(err);
+			}
+		});
+
+		section.appendChild(header);
+		section.appendChild(form);
+		section.appendChild(result);
+		container.appendChild(section);
+	}
+});
+</script>
+
 
 
