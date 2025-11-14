@@ -1,13 +1,12 @@
 Styling:
 [x] - Implement Bootstrap classes into basic UI
 Git:
-[ ] - Create a README.md
+[x] - Create a README.md
 Backend:
-[ ] - Calculator logic as RESTful endpoints
+[x] - Unit conversion dictionaries and function
+[x] - Calculator logic as RESTful endpoints
 [ ] - Asynchronous operations with Task.Delay()
-[ ] - Add example POST/PUT endpoints with dummy responses (databases are overkill)
-CI/CD:
-[ ] - Set up GitHub Actions
 Frontend:
-[ ] - Powers/Logarithms
-[ ] - Calculus
+[x] - Finish unit conversion page and controller
+[ ] - Add Unit Conversions to history page
+[ ] - Add search function to history page

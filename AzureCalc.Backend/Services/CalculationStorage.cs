@@ -31,6 +31,12 @@ public class CalculationStorage
 
 	public async Task SaveCalculationAsync(string operation, double a, double b, double result)
 	{
+		// Sanitize entry, preventing NaN or infinity
+		if (double.IsNaN(result) || double.IsInfinity(result))
+		{
+			return;
+		}
+
 		var entity = new CalculationEntity
         	{
             		A = a,
@@ -41,4 +47,16 @@ public class CalculationStorage
 
         await _tableClient.AddEntityAsync(entity);
     	}
+
+	public async Task<List<CalculationEntity>> GetAllAsync()
+	{
+		var query = _tableClient.QueryAsync<CalculationEntity>();
+		var results = new List<CalculationEntity>();
+
+		await foreach (var item in query)
+			results.Add(item);
+
+		return results;
+	}
+
 }

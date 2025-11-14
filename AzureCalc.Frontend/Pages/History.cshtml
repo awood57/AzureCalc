@@ -1,0 +1,42 @@
+@page
+
+<h2 class="text-primary">History</h2>
+
+<div id="historyContainer" class="mt-3">
+    <p>Loading history…</p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+	const container = document.getElementById("historyContainer");
+
+	try {
+        	const response = await fetch("/api/HistoryApi/all");
+        	const history = await response.json();
+
+        if (!history || history.length === 0) {
+        	container.innerHTML = "<p>No history found.</p>";
+        	return;
+        }
+
+        let html = "<ul class='list-group'>";
+
+        history.forEach(item => {
+        	html += `
+        		<li class="list-group-item">
+			<strong>${item.a} ${item.operation} ${item.b}</strong> = ${item.result}
+                	<div class="text-muted small">${item.timestamp}</div>
+                	</li>
+        	`;
+        });
+
+        html += "</ul>";
+        container.innerHTML = html;
+
+	} catch (err) {
+		container.innerHTML = "<p class='text-danger'>Error loading history.</p>";
+        	console.error(err);
+	}
+});
+</script>
+
