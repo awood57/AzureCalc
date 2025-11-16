@@ -17,7 +17,7 @@ namespace AzureCalc.Frontend.Controllers
 			_storage = storage;
 		}
 		[HttpGet("basic")]
-		public IActionResult Basic([FromQuery] double num1, [FromQuery] double num2, [FromQuery] string operation)
+		public async Task<IActionResult> Basic([FromQuery] double num1, [FromQuery] double num2, [FromQuery] string operation)
 		{
 			operation = operation.ToLower();
 
@@ -33,11 +33,11 @@ namespace AzureCalc.Frontend.Controllers
 			if (result == null)
 				return BadRequest(new { error = "Invalid operation" });
 
-			_storage.SaveCalculationAsync(operation, num1, num2, result.Value);
+			await _storage.SaveCalculationAsync(operation, num1, num2, result.Value);
 			return Ok(new { num1, num2, operation, result });
 		}
 		[HttpPost("power")]
-		public IActionResult Power([FromBody] PowerRequest request)
+		public async Task<IActionResult> Power([FromBody] PowerRequest request)
 		{
 			var op = request.Operation.ToLower();
 
@@ -52,8 +52,8 @@ namespace AzureCalc.Frontend.Controllers
 				return BadRequest(new { error = "Invalid power operation" });
 			
 			// Save power operation goes here
-			//
-			//
+			await _storage.SaveCalculationAsync(op, request.BaseNum, request.ExponentLog, result.Value);
+
 			return Ok(new { request.BaseNum, request.ExponentLog, request.Operation, result });
 		}
 
