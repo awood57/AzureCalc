@@ -51,9 +51,7 @@ namespace AzureCalc.Frontend.Controllers
 			if (result == null)
 				return BadRequest(new { error = "Invalid power operation" });
 			
-			// Save power operation goes here
 			await _storage.SaveCalculationAsync(op, request.BaseNum, request.ExponentLog, result.Value);
-
 			return Ok(new { request.BaseNum, request.ExponentLog, request.Operation, result });
 		}
 
