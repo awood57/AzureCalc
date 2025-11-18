@@ -18,44 +18,25 @@ public class ConversionEntity : ITableEntity
 	public double OutputValue { get; set; }
 }
 
-public class ConversionStorage
+public class ConversionStorage : TableStorage<ConversionEntity>
 {
-	private readonly TableClient _tableClient;
+    public ConversionStorage(string connectionString)
+        : base(connectionString, "Conversions") { }
 
-	public ConversionStorage(string connectionString)
-	{
-		var serviceClient = new TableServiceClient(connectionString);
-		_tableClient = serviceClient.GetTableClient("Conversions");
-		_tableClient.CreateIfNotExists();
-	}
+    public async Task SaveConversionAsync(string fromUnit, string toUnit, double inputValue, double outputValue)
+    {
+        if (double.IsNaN(outputValue) || double.IsInfinity(outputValue))
+            return;
 
-	public async Task SaveConversionAsync(string fromUnit, string toUnit, double inputValue, double outputValue)
-	{
-		// Sanitize entry
-		if (double.IsNaN(outputValue) || double.IsInfinity(outputValue))
-		{
-			return;
-		}
-	
-		var entity = new ConversionEntity
-		{
-			FromUnit = fromUnit,
-			ToUnit = toUnit,
-			InputValue = inputValue,
-			OutputValue = outputValue
-		};
+        var entity = new ConversionEntity
+        {
+            FromUnit = fromUnit,
+            ToUnit = toUnit,
+            InputValue = inputValue,
+            OutputValue = outputValue
+        };
 
-		await _tableClient.AddEntityAsync(entity);
-	}
-
-	public async Task<List<ConversionEntity>> GetAllAsync()
-	{
-		var query = _tableClient.QueryAsync<ConversionEntity>();
-		var results = new List<ConversionEntity>();
-
-		await foreach (var item in query)
-			results.Add(item);
-
-		return results;
-	}
+        await SaveAsync(entity);
+    }
 }
+

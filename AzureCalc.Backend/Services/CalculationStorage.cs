@@ -18,45 +18,25 @@ public class CalculationEntity : ITableEntity
 	public double Result { get; set; }
 }
 
-public class CalculationStorage
+public class CalculationStorage : TableStorage<CalculationEntity>
 {
-	private readonly TableClient _tableClient;
+    public CalculationStorage(string connectionString)
+        : base(connectionString, "Calculations") { }
 
-	public CalculationStorage(string connectionString)
-	{
-		var serviceClient = new TableServiceClient(connectionString);
-		_tableClient = serviceClient.GetTableClient("Calculations");
-		_tableClient.CreateIfNotExists();
-	}
+    public async Task SaveCalculationAsync(string operation, double a, double b, double result)
+    {
+        if (double.IsNaN(result) || double.IsInfinity(result))
+            return;
 
-	public async Task SaveCalculationAsync(string operation, double a, double b, double result)
-	{
-		// Sanitize entry, preventing NaN or infinity
-		if (double.IsNaN(result) || double.IsInfinity(result))
-		{
-			return;
-		}
+        var entity = new CalculationEntity
+        {
+            A = a,
+            B = b,
+            Operation = operation,
+            Result = result
+        };
 
-		var entity = new CalculationEntity
-        	{
-            		A = a,
-            		B = b,
-            		Operation = operation,
-            		Result = result
-        	};
-
-        await _tableClient.AddEntityAsync(entity);
-    	}
-
-	public async Task<List<CalculationEntity>> GetAllAsync()
-	{
-		var query = _tableClient.QueryAsync<CalculationEntity>();
-		var results = new List<CalculationEntity>();
-
-		await foreach (var item in query)
-			results.Add(item);
-
-		return results;
-	}
-
+        await SaveAsync(entity);
+    }
 }
+
