@@ -9,11 +9,13 @@ namespace AzureCalc.Frontend.Controllers
 	public class UnitConversionApiController : ControllerBase
 	{
 		private readonly UnitConversion _converter;
+		private readonly ConversionStorage _storage;
 		// TODO: Unit conversion storage??
 
-		public UnitConversionApiController()
+		public UnitConversionApiController(ConversionStorage storage)
 		{
 			_converter = new UnitConversion();
+			_storage = storage;
 		}
 		
 		// Return categories for UI
@@ -36,10 +38,12 @@ namespace AzureCalc.Frontend.Controllers
 
 		// Conversion endpoint
 		[HttpGet("convert")]
-		public IActionResult ConvertUnity(double value, string from, string to, string category)
+		public async Task<IActionResult> ConvertUnit(double value, string from, string to, string category)
 		{
 			double result = _converter.Convert(value, from, to, category);
+			await _storage.SaveConversionAsync(from, to, value, result);
 			return Ok(new { value, from, to, result });
+
 		}
 
 	}

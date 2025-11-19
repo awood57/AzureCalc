@@ -7,18 +7,30 @@ namespace AzureCalc.Frontend.Controllers
 	[Route("api/[controller]")]
 	public class HistoryApiController : ControllerBase
 	{
-		private readonly CalculationStorage _storage;
+		private readonly CalculationStorage _calcStorage;
+		private readonly ConversionStorage _convStorage;
 
-		public HistoryApiController(CalculationStorage storage)
+		public HistoryApiController(CalculationStorage calcStorage, ConversionStorage convStorage)
 		{
-			_storage = storage;
+			_calcStorage = calcStorage;
+			_convStorage = convStorage;
 		}
 
 		[HttpGet("all")]
 		public async Task<IActionResult> GetAll()
 		{
-			var entries = await _storage.GetAllAsync();
-			return Ok(entries);
+			var calcTask = _calcStorage.GetAllAsync();
+			var convTask = _convStorage.GetAllAsync();
+
+			await Task.WhenAll(calcTask, convTask);
+
+			var response = new
+			{
+				calculations = await calcTask,
+				conversions = await convTask
+			};
+
+			return Ok(response);
 		}
 	}
 }
