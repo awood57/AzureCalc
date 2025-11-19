@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<CalculationStorage>(sp => new CalculationStorage("UseDevelopmentStorage=true"));
+builder.Services.AddSingleton<ConversionStorage>(sp => new ConversionStorage("UseDevelopmentStorage=true"));
 
 var app = builder.Build();
 
