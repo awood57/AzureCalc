@@ -10,11 +10,10 @@ namespace AzureCalc.Frontend.Controllers
 	{
 		private readonly UnitConversion _converter;
 		private readonly ConversionStorage _storage;
-		// TODO: Unit conversion storage??
 
-		public UnitConversionApiController(ConversionStorage storage)
+		public UnitConversionApiController(UnitConversion converter, ConversionStorage storage)
 		{
-			_converter = new UnitConversion();
+			_converter = converter;
 			_storage = storage;
 		}
 		

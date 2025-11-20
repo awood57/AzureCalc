@@ -1,3 +1,4 @@
+using AzureCalc.Backend;
 using AzureCalc.Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,8 +6,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
-builder.Services.AddSingleton<CalculationStorage>(sp => new CalculationStorage("UseDevelopmentStorage=true"));
-builder.Services.AddSingleton<ConversionStorage>(sp => new ConversionStorage("UseDevelopmentStorage=true"));
+
+
+var connectionString = builder.Configuration.GetConnectionString("AzureStorage");
+
+if (string.IsNullOrEmpty(connectionString))
+{
+	throw new InvalidOperationException("Error: AzureStorage connection string not found.");
+}
+
+builder.Services.AddSingleton<CalculationStorage>(sp => new CalculationStorage(connectionString));
+builder.Services.AddSingleton<ConversionStorage>(sp => new ConversionStorage(connectionString));
+
+builder.Services.AddSingleton<Calculator>();
+builder.Services.AddSingleton<UnitConversion>();
 
 var app = builder.Build();
 

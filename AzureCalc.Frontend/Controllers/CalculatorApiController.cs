@@ -11,9 +11,9 @@ namespace AzureCalc.Frontend.Controllers
 		private readonly Calculator _calculator;
 		private readonly CalculationStorage _storage;
 
-		public CalculatorApiController(CalculationStorage storage)
+		public CalculatorApiController(Calculator calculator, CalculationStorage storage)
 		{
-			_calculator = new Calculator();
+			_calculator = calculator;
 			_storage = storage;
 		}
 		[HttpGet("basic")]
