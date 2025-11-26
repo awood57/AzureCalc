@@ -1,5 +1,9 @@
 @page
 
+@{
+    var apiUrl = Environment.GetEnvironmentVariable("API_URL");
+}
+
 <h2 class="text-primary">Basic Math Functions</h2>
 
 <form id="calcForm">
@@ -42,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const num2 = parseFloat(document.getElementById('num2').value);
 		const operation = document.getElementById('operation').value;
 
-		const response = await fetch(`/api/CalculatorApi/basic?num1=${num1}&num2=${num2}&operation=${operation}`);
+		const response = await fetch(`@apiUrl/api/calculator/basic?num1=${num1}&num2=${num2}&operation=${operation}`);
 		const data = await response.json();
 		document.getElementById('result').innerText = `Result: ${data.result}`;
 	});
@@ -53,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         	const exponentLog = parseFloat(document.getElementById('exponentLog').value);
         	const powerOperation = document.getElementById('powerOperation').value;
 
-        	const response = await fetch('/api/CalculatorApi/power', {
+        	const response = await fetch('@apiUrl/api/calculator/power', {
         		method: 'POST',
         		headers: { 'Content-Type': 'application/json' },
         		body: JSON.stringify({

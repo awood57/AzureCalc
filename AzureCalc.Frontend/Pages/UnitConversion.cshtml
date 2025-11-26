@@ -1,5 +1,9 @@
 @page
 
+@{
+    var apiUrl = Environment.GetEnvironmentVariable("API_URL");
+}
+
 <h1 class="text-primary">Unit Conversion</h1>
 
 <div id="conversion-container"></div>
@@ -8,7 +12,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
 	const container = document.getElementById("conversion-container");
 
-	const res = await fetch("/api/UnitConversionApi/categories");
+	const res = await fetch("@apiUrl/api/converter/categories");
 	const categories = await res.json();
 
 	for (const [category, units] of Object.entries(categories)) {
@@ -52,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 			}
 
 			try {
-				const response = await fetch(`/api/UnitConversionApi/convert?value=${value}&from=${from}&to=${to}&category=${category}`);
+				const response = await fetch(`@apiUrl/api/converter/convert?value=${value}&from=${from}&to=${to}&category=${category}`);
 				const data = await response.json();
 				result.innerText = `${data.value} ${data.from} = ${data.result} ${data.to}`;
 			} catch (err) {

@@ -1,5 +1,9 @@
 @page
 
+@{
+    var apiUrl = Environment.GetEnvironmentVariable("API_URL");
+}
+
 <h2 class="text-primary">History</h2>
 
 <div class="container mt-3">
@@ -26,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	const convContainer = document.getElementById("convContainer");
 
 	try {
-        	const response = await fetch("/api/HistoryApi/all");
+        	const response = await fetch("@apiUrl/api/history/all");
         	const data = await response.json();
 
 		const renderList = (items, isCalculation) => {
@@ -41,17 +45,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 				let timestamp = new Date(item.timestamp).toLocaleString();
 
 				if (isCalculation) {
-					content = `
-						<strong>${item.a} ${item.operation} ${item.b}</strong> = ${item.result}
-					`;
+    					content = `<strong>${item.A} ${item.Operation} ${item.B}</strong> = ${item.Result}`;
 				} else {
-					// Expandable if new tables are added
-					content = `
-						<strong>${item.inputValue} ${item.fromUnit}</strong> to
-						<strong>${item.outputValue} ${item.toUnit}</strong>
-					`;
+					content = `<strong>${item.InputValue} ${item.FromUnit}</strong> to <strong>${item.OutputValue} ${item.ToUnit}</strong>`;
 				}
-
+	
+	
 				html += `
 					<li class="list-group-item">
 						${content}
