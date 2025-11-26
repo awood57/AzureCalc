@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Azure;
 using Azure.Data.Tables;
 
-namespace AzureCalc.Backend.Services;
+namespace AzureCalc.Services;
 
 public class CalculationEntity : ITableEntity
 {

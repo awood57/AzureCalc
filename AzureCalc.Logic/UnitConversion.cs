@@ -1,4 +1,4 @@
-namespace AzureCalc.Backend
+namespace AzureCalc.Logic
 {
 	public class UnitConversion
 	{
