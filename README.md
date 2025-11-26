@@ -28,30 +28,8 @@ dotnet run
 ## Configuration
 The frontend API_URL environment variable is set in `launchSettings.json`
 ```json
-{
-  "$schema": "https://json.schemastore.org/launchsettings.json",
-  "profiles": {
-    "http": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5275",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-	    "API_URL": "http://localhost:7071"
-      }
-    },
-    "https": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:7193;http://localhost:5275",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-	    "API_URL": "http://localhost:7071"
-      }
-    }
-  }
+"environmentVariables": {
+    "API_URL": "http://localhost:7071"
 }
 ```
 
