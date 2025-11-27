@@ -1,5 +1,5 @@
-using AzureCalc.Backend;
-using AzureCalc.Backend.Services;
+using AzureCalc.Services;
+using AzureCalc.Logic;
 
 var builder = WebApplication.CreateBuilder(args);
 
