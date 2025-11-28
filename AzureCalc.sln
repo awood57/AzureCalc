@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCalc_Api", "AzureCalc.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCalc.Services", "AzureCalc.Services\AzureCalc.Services.csproj", "{B914A390-F0E4-4299-90A7-C8AA8DFBABEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCalc.Tests", "AzureCalc.Tests\AzureCalc.Tests.csproj", "{5946EBC7-DB22-4A79-AADD-77B9D21054DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,18 @@ Global
 		{B914A390-F0E4-4299-90A7-C8AA8DFBABEC}.Release|x64.Build.0 = Release|Any CPU
 		{B914A390-F0E4-4299-90A7-C8AA8DFBABEC}.Release|x86.ActiveCfg = Release|Any CPU
 		{B914A390-F0E4-4299-90A7-C8AA8DFBABEC}.Release|x86.Build.0 = Release|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Debug|x64.Build.0 = Debug|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Release|x64.ActiveCfg = Release|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Release|x64.Build.0 = Release|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{5946EBC7-DB22-4A79-AADD-77B9D21054DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
