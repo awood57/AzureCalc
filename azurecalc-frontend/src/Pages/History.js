@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./HistoryPage.css";
+import "./History.css";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 //TODO: Clean up display, make it look neat, and fiddle with the CSS file a bit.
 function HistoryPage() {
@@ -8,7 +10,7 @@ function HistoryPage() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-        fetch("http://localhost:7071/api/history/all")
+        fetch(`${API_URL}/api/history/all`)
             .then((res) => res.json())
             .then(data => {
 		    setCalculations(data.calculations || []);
